@@ -1,0 +1,136 @@
+@charset "UTF-8";
+
+body {
+	font-family: Arial, sans-serif;
+	background-color: #f4f4f4;
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+header {
+	background-color: #333;
+	color: #fff;
+	text-align: center;
+	padding: 1em 0;
+}
+
+.container {
+	max-width: 1200px;
+	margin: 20px auto;
+	padding: 20px;
+	background-color: #fff;
+	border-radius: 5px;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+button {
+	background-color: #4CAF50;
+	color: #fff;
+	padding: 10px;
+	border: none;
+	cursor: pointer;
+	width: 70px;
+	padding-top: 10px;
+}
+
+select,
+input[type="text"] {
+	padding: 10px;
+	margin: 5px;
+	width: 150px;
+}
+
+table {
+	width: 100%;
+	border-collapse: collapse;
+	margin-top: 20px;
+}
+
+th,
+td {
+	padding: 2px;
+	text-align: center;
+	border-bottom: 1px solid #ddd;
+	border-right: 1px solid #ddd;
+	border-left: 1px solid #ddd;
+	/* Add vertical line */
+}
+
+th {
+	background-color: #4CAF50;
+	color: #fff;
+	text-align: center;
+	padding: 12px;
+
+}
+
+.action-buttons button {
+	background-color: #f44336;
+	color: #fff;
+	border: none;
+	padding: 8px;
+	margin-right: 10px;
+	cursor: pointer;
+	margin-left: 10px;
+}
+
+.action-buttons button.edit {
+	background-color: #2196F3;
+	margin: 10px;
+}
+
+.addcustomer {
+	margin-right: 50px;
+	width: 180px;
+	background-color: rgb(15, 59, 59);
+
+}
+
+.viewall {
+	width: 100px;
+	height: 60px;
+	background-color: #2196F3;
+	margin-top: px;
+	margin-left: 850px;
+	padding-bottom: 20px;
+	text-align: center;
+}
+
+.pagination {
+	align-items: center;
+	align-content: center;
+	margin-left: 450px;
+	padding: 50px;
+	padding-bottom: 10px;
+	font-size: larger;
+}
+
+.current-page {
+	background-color: #4CAF50;
+	padding: 5px;
+	border-radius: 4px;
+}
+
+.Remaining-page {
+	text-decoration: none;
+	padding: 5px;
+}
+
+.Sync {
+	margin-left: 1085px;
+	width: 100px;
+	height: 60px;
+
+}
+
+.searching {
+	margin-top: -50px;
+}
+
+.nextpreivous {
+	text-decoration: none;
+	color: blueviolet;
+	padding: 5px;
+
+}
