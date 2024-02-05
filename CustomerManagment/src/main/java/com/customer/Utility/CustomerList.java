@@ -12,7 +12,6 @@ public class CustomerList {
 	public JSONArray getCustomerListArray(String bearerToken) {
 
 		// Specify the customer list endpoint URL
-		// String bearerToken = "dGVzdEBzdW5iYXNlZGF0YS5jb206VGVzdEAxMjM=";
 		String customerListUrl = "https://qa.sunbasedata.com/sunbase/portal/api/assignment.jsp?cmd=get_customer_list";
 
 		try {
