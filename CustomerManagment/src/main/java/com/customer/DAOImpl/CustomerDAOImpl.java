@@ -2,7 +2,6 @@ package com.customer.DAOImpl;
 
 import java.sql.Connection;
 
-
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -46,24 +45,22 @@ public class CustomerDAOImpl implements CustomerDAO {
 	public void addCustomer(Customer customer) {
 
 		try {
-			if(getCustomerById(customer.getUserid())==null) {
-			prepareStatement = connection.prepareStatement(INSERT_QUERY);
-			
-			
-			prepareStatement.setString(1, customer.getUserid().trim());
-			prepareStatement.setString(2, customer.getFirst_name().trim());
-			prepareStatement.setString(3, customer.getLast_name().trim());
-			prepareStatement.setString(4, customer.getStreet().trim());
-			prepareStatement.setString(5, customer.getAddress().trim());
-			prepareStatement.setString(6, customer.getCity().trim());
-			prepareStatement.setString(7, customer.getState().trim());
-			prepareStatement.setString(8, customer.getEmail().trim());
-			prepareStatement.setLong(9, customer.getPhone_number());
+			if (getCustomerById(customer.getUserid()) == null) {
+				prepareStatement = connection.prepareStatement(INSERT_QUERY);
 
-			int i = prepareStatement.executeUpdate();
-//			System.out.println(i);
-			}else {
-				
+				prepareStatement.setString(1, customer.getUserid().trim());
+				prepareStatement.setString(2, customer.getFirst_name().trim());
+				prepareStatement.setString(3, customer.getLast_name().trim());
+				prepareStatement.setString(4, customer.getStreet().trim());
+				prepareStatement.setString(5, customer.getAddress().trim());
+				prepareStatement.setString(6, customer.getCity().trim());
+				prepareStatement.setString(7, customer.getState().trim());
+				prepareStatement.setString(8, customer.getEmail().trim());
+				prepareStatement.setLong(9, customer.getPhone_number());
+
+				int i = prepareStatement.executeUpdate();
+			} else {
+
 				updateCustomer(customer);
 			}
 
@@ -91,7 +88,6 @@ public class CustomerDAOImpl implements CustomerDAO {
 			prepareStatement.setString(9, customer.getUserid().trim());
 
 			int i = prepareStatement.executeUpdate();
-			System.out.println(i);
 
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -129,8 +125,9 @@ public class CustomerDAOImpl implements CustomerDAO {
 			List<Customer> list = new ArrayList<Customer>();
 			// `first_name`, `last_name`, `street`, `city`, `state`, `email`, `phone_number
 			while (res.next()) {
-				Customer c = new Customer(res.getString("customerId"), res.getString("first_name"), res.getString("last_name"),
-						res.getString("street"),res.getString("address"), res.getString("city"), res.getString("state"), res.getString("email"),
+				Customer c = new Customer(res.getString("customerId"), res.getString("first_name"),
+						res.getString("last_name"), res.getString("street"), res.getString("address"),
+						res.getString("city"), res.getString("state"), res.getString("email"),
 						res.getLong("phone_number"));
 				list.add(c);
 
@@ -149,15 +146,16 @@ public class CustomerDAOImpl implements CustomerDAO {
 	public List<Customer> getCustomerByFirst_name(String first_name) {
 		try {
 			prepareStatement = connection.prepareStatement(SELECT_QUERY1);
-			prepareStatement.setString(1, first_name.trim()+"%");
+			prepareStatement.setString(1, first_name.trim() + "%");
 
 			res = prepareStatement.executeQuery();
 
 			List<Customer> list = new ArrayList<Customer>();
 			// `first_name`, `last_name`, `street`, `city`, `state`, `email`, `phone_number
 			while (res.next()) {
-				Customer c = new Customer(res.getString("customerId"), res.getString("first_name"), res.getString("last_name"),
-						res.getString("street"),res.getString("address"), res.getString("city"), res.getString("state"), res.getString("email"),
+				Customer c = new Customer(res.getString("customerId"), res.getString("first_name"),
+						res.getString("last_name"), res.getString("street"), res.getString("address"),
+						res.getString("city"), res.getString("state"), res.getString("email"),
 						res.getLong("phone_number"));
 				list.add(c);
 			}
@@ -174,15 +172,16 @@ public class CustomerDAOImpl implements CustomerDAO {
 	public List<Customer> getCustomerByEmail(String email) {
 		try {
 			prepareStatement = connection.prepareStatement(SELECT_QUERY3);
-			prepareStatement.setString(1, email.trim()+"%");
+			prepareStatement.setString(1, email.trim() + "%");
 
 			res = prepareStatement.executeQuery();
 
 			List<Customer> list = new ArrayList<Customer>();
 			// `first_name`, `last_name`, `street`, `city`, `state`, `email`, `phone_number
 			while (res.next()) {
-				Customer c = new Customer(res.getString("customerId"), res.getString("first_name"), res.getString("last_name"),
-						res.getString("street"),res.getString("address"), res.getString("city"), res.getString("state"), res.getString("email"),
+				Customer c = new Customer(res.getString("customerId"), res.getString("first_name"),
+						res.getString("last_name"), res.getString("street"), res.getString("address"),
+						res.getString("city"), res.getString("state"), res.getString("email"),
 						res.getLong("phone_number"));
 				list.add(c);
 			}
@@ -199,7 +198,7 @@ public class CustomerDAOImpl implements CustomerDAO {
 	public List<Customer> getCustomerByCity(String city) {
 		try {
 			prepareStatement = connection.prepareStatement(SELECT_QUERY2);
-			prepareStatement.setString(1, city.trim()+"%");
+			prepareStatement.setString(1, city.trim() + "%");
 
 			res = prepareStatement.executeQuery();
 			System.out.println("hi");
@@ -208,8 +207,9 @@ public class CustomerDAOImpl implements CustomerDAO {
 			// `first_name`, `last_name`, `street`, `city`, `state`, `email`, `phone_number
 			while (res.next()) {
 
-				Customer c = new Customer(res.getString("customerId"), res.getString("first_name"), res.getString("last_name"),
-						res.getString("street"),res.getString("address"), res.getString("city"), res.getString("state"), res.getString("email"),
+				Customer c = new Customer(res.getString("customerId"), res.getString("first_name"),
+						res.getString("last_name"), res.getString("street"), res.getString("address"),
+						res.getString("city"), res.getString("state"), res.getString("email"),
 						res.getLong("phone_number"));
 				list.add(c);
 			}
@@ -233,8 +233,9 @@ public class CustomerDAOImpl implements CustomerDAO {
 			List<Customer> list = new ArrayList<Customer>();
 			// `first_name`, `last_name`, `street`, `city`, `state`, `email`, `phone_number
 			while (res.next()) {
-				Customer c = new Customer(res.getString("customerId"), res.getString("first_name"), res.getString("last_name"),
-						res.getString("street"),res.getString("address"), res.getString("city"), res.getString("state"), res.getString("email"),
+				Customer c = new Customer(res.getString("customerId"), res.getString("first_name"),
+						res.getString("last_name"), res.getString("street"), res.getString("address"),
+						res.getString("city"), res.getString("state"), res.getString("email"),
 						res.getLong("phone_number"));
 				list.add(c);
 			}
@@ -253,14 +254,15 @@ public class CustomerDAOImpl implements CustomerDAO {
 			prepareStatement = connection.prepareStatement(SELECT_QUERY5);
 			prepareStatement.setString(1, customerId.trim());
 			res = prepareStatement.executeQuery();
-			
-			while(res.next()) {
-				Customer c = new Customer(res.getString("customerId"), res.getString("first_name"), res.getString("last_name"),
-						res.getString("street"),res.getString("address"), res.getString("city"), res.getString("state"), res.getString("email"),
+
+			while (res.next()) {
+				Customer c = new Customer(res.getString("customerId"), res.getString("first_name"),
+						res.getString("last_name"), res.getString("street"), res.getString("address"),
+						res.getString("city"), res.getString("state"), res.getString("email"),
 						res.getLong("phone_number"));
-			return c;
+				return c;
 			}
-			
+
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

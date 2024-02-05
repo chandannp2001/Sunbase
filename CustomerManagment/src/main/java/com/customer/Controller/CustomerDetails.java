@@ -21,6 +21,7 @@ import com.customer.Utility.CustomerList;
 @WebServlet("/CustomerDetails")
 public class CustomerDetails extends HttpServlet {
 
+	private static final long serialVersionUID = 1L;
 	static private CustomerDAOImpl cimpl;
 	static private HttpSession session;
 	static private List<Customer> getAllCustomer;
@@ -59,14 +60,12 @@ public class CustomerDetails extends HttpServlet {
 					editCoustomer(req, resp);
 				} else if (action.equals("update")) {
 					updateCustomer(req);
-				} else if (action.equals("Add")) {//// CustomerDetails?action=Pageing&pageNumber
+				} else if (action.equals("Add")) {
 					addCustomer(req);
 				} else if (action.equals("Pageing")) {
 					paging(req);
 				} else if (action.equals("Sync")) {
-					System.out.println("starting sync");
 					syncing(req);
-					System.out.println("complete sync");
 				}
 			}
 
@@ -208,4 +207,3 @@ public class CustomerDetails extends HttpServlet {
 	}
 
 }
-//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
