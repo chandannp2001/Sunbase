@@ -19,11 +19,11 @@ public class CustomerDAOImpl implements CustomerDAO {
 	private static final String INSERT_QUERY = "INSERT INTO `customer` (`customerId`,`first_name`, `last_name`, `street`, `address`, `city`, `state`, `email`, `phone_number`) VALUES (?,?,?,?,?,?,?,?,?)";
 	private static final String UPDATE_QUERY = "UPDATE `customer` SET  `first_name`=?, `last_name`=?, `street`=?, `address`=?, `city`=?, `state`=?,  `email`=?,  `phone_number`=? WHERE (`customerId`=?)";
 	private static final String DELETE_QUERY = "DELETE FROM `customer` WHERE (`customerId`=?)";
-	private static final String SELECT_QUERY1 = "SELECT * FROM `customer` WHERE (`first_name`=?)";
-	private static final String SELECT_QUERY2 = "SELECT * FROM `customer` WHERE (`city`=?)";
-	private static final String SELECT_QUERY3 = "SELECT * FROM `customer` WHERE (`email`=?)";
-	private static final String SELECT_QUERY4 = "SELECT * FROM `customer` WHERE (`phone_number`=?)";
-	private static final String SELECT_QUERY5 = "SELECT * FROM `customer` WHERE (`customerId`=?)";
+	private static final String SELECT_QUERY1 = "SELECT * FROM `customer` WHERE (`first_name` LIKE ?)";
+	private static final String SELECT_QUERY2 = "SELECT * FROM `customer` WHERE (`city` LIKE ?)";
+	private static final String SELECT_QUERY3 = "SELECT * FROM `customer` WHERE (`email` LIKE ?)";
+	private static final String SELECT_QUERY4 = "SELECT * FROM `customer` WHERE (`phone_number` = ?)";
+	private static final String SELECT_QUERY5 = "SELECT * FROM `customer` WHERE (`customerId` = ?)";
 	private static final String SELECTALL_QUERY = "SELECT * FROM `customer`";
 
 	private static Connection connection;
@@ -149,7 +149,7 @@ public class CustomerDAOImpl implements CustomerDAO {
 	public List<Customer> getCustomerByFirst_name(String first_name) {
 		try {
 			prepareStatement = connection.prepareStatement(SELECT_QUERY1);
-			prepareStatement.setString(1, first_name.trim());
+			prepareStatement.setString(1, first_name.trim()+"%");
 
 			res = prepareStatement.executeQuery();
 
@@ -174,7 +174,7 @@ public class CustomerDAOImpl implements CustomerDAO {
 	public List<Customer> getCustomerByEmail(String email) {
 		try {
 			prepareStatement = connection.prepareStatement(SELECT_QUERY3);
-			prepareStatement.setString(1, email.trim());
+			prepareStatement.setString(1, email.trim()+"%");
 
 			res = prepareStatement.executeQuery();
 
@@ -199,7 +199,7 @@ public class CustomerDAOImpl implements CustomerDAO {
 	public List<Customer> getCustomerByCity(String city) {
 		try {
 			prepareStatement = connection.prepareStatement(SELECT_QUERY2);
-			prepareStatement.setString(1, city.trim());
+			prepareStatement.setString(1, city.trim()+"%");
 
 			res = prepareStatement.executeQuery();
 			System.out.println("hi");

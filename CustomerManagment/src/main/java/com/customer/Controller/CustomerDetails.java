@@ -64,7 +64,9 @@ public class CustomerDetails extends HttpServlet {
 				} else if (action.equals("Pageing")) {
 					paging(req);
 				} else if (action.equals("Sync")) {
+					System.out.println("starting sync");
 					syncing(req);
+					System.out.println("complete sync");
 				}
 			}
 
@@ -104,9 +106,10 @@ public class CustomerDetails extends HttpServlet {
 	private void deleteCustomer(HttpServletRequest req) {
 
 		String CustomerId = req.getParameter("cid");
+		Customer customerById = cimpl.getCustomerById(CustomerId);
 		cimpl.deleteCustomer(CustomerId);
 		getAllCustomer = cimpl.getAllCustomer();
-		req.setAttribute("message", "Customer Deleted Sucessfully. ");
+		req.setAttribute("message", "Customer "+customerById.getFirst_name()+" "+customerById.getLast_name()+" Deleted Sucessfully. ");
 
 	}
 
@@ -135,7 +138,7 @@ public class CustomerDetails extends HttpServlet {
 		cimpl.updateCustomer(c);
 		getAllCustomer = cimpl.getAllCustomer();
 		session.setAttribute("AllCustomers", getAllCustomer);
-		req.setAttribute("message", "Customer Sucessfully updated. ");
+		req.setAttribute("message", "Customer "+firstname+" "+lastname+" Successfully updated. ");
 
 	}
 
@@ -155,7 +158,7 @@ public class CustomerDetails extends HttpServlet {
 		cimpl.addCustomer(c);
 		getAllCustomer = cimpl.getAllCustomer();
 		session.setAttribute("AllCustomers", getAllCustomer);
-		req.setAttribute("message", "Customer Sucessfully Added. ");
+		req.setAttribute("message", "Customer "+firstname+" "+lastname+" Successfully Added. ");
 
 	}
 
@@ -196,10 +199,12 @@ public class CustomerDetails extends HttpServlet {
 				cimpl.addCustomer(c);
 
 			}
-			req.setAttribute("message", "Customers Synced Successfully. ");
 
 		}
 
+		getAllCustomer = cimpl.getAllCustomer();
+		session.setAttribute("AllCustomers", getAllCustomer);
+		req.setAttribute("message", "Customers Synced Successfully. ");
 	}
 
 }
