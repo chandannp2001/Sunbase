@@ -95,6 +95,7 @@ input:focus {
 .login-button:hover {
 	background-color: #2196F3;
 	color:#161414;
+	margin-top: 0px;
 }
 
 
