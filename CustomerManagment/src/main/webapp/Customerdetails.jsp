@@ -73,9 +73,12 @@
 			<tbody>
 				<!-- Sample data, replace with dynamic data from your application -->
 				<%
+				int numberofDetails = 8;//number of customer details to be display per page.
+				
 				List<Customer> getAllCustomer = (List<Customer>) session.getAttribute("AllCustomers");
+				
 				if (getAllCustomer != null) {
-					int numberofDetails = 8;
+					
 					int i = 0;
 					int startIndex = currentPage == 1 ? 0 : (currentPage - 1) * numberofDetails;
 					int endIndex = currentPage * numberofDetails;
@@ -121,9 +124,9 @@
 
 		<div class="pagination">
 			<%
-			int pageSize = 8;
+			//int pageSize = 5;
 			int totalCustomers = getAllCustomer.size();
-			int totalPages = (int) Math.ceil((double) totalCustomers / pageSize);
+			int totalPages = (int) Math.ceil((double) totalCustomers /numberofDetails );
 			if (totalPages > 1) {
 			%>
 			<span>Page: </span>

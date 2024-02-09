@@ -30,7 +30,7 @@ public class CustomerDAOImpl implements CustomerDAO {
 	private static Statement statement;
 	private static ResultSet res;
 
-	public CustomerDAOImpl() {// String first_name, String last_name, String street, String city, String
+	public  CustomerDAOImpl() {// String first_name, String last_name, String street, String city, String
 								// state,
 		// String email, int phone_number
 		try {

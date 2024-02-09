@@ -1,6 +1,7 @@
 package com.customer.Utility;
 
 import java.io.BufferedReader;
+
 import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
@@ -17,7 +18,7 @@ public class Authentication {
 
 			// Open a connection to the URL
 			HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-
+			
 			// Set the request method to POST
 			connection.setRequestMethod("POST");
 
@@ -37,7 +38,7 @@ public class Authentication {
 
 			// Get the response code from the connection
 			int responseCode = connection.getResponseCode();
-
+			
 			// Check if the response code indicates success (200 OK)
 			if (responseCode == HttpURLConnection.HTTP_OK) {
 				// Read the response from the connection input stream
