@@ -1,7 +1,6 @@
 package com.customer.Controller;
 
 import java.io.IOException;
-
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -192,9 +191,17 @@ public class CustomerDetails extends HttpServlet {
 				String city = jsonObject.getString("city");
 				String state = jsonObject.getString("state");
 				String email = jsonObject.getString("email");
-				long phone = Long.parseLong(jsonObject.getString("phone"));
+				Long phone ;
+				try {
+					
+					 phone = Long.parseLong(jsonObject.getString("phone"));
+				}catch (Exception e) {
+					phone = 0l;
+				}
+				
+				
 
-				Customer c = new Customer(uuid, first_name, last_name, street, address, city, state, email, phone);
+				Customer c = new Customer(uuid, first_name, last_name, street, address, city, state, email,phone);
 				cimpl.addCustomer(c);
 
 			}
@@ -204,6 +211,7 @@ public class CustomerDetails extends HttpServlet {
 		getAllCustomer = cimpl.getAllCustomer();
 		session.setAttribute("AllCustomers", getAllCustomer);
 		req.setAttribute("message", "Customers Synced Successfully. ");
+		
 	}
 
 }

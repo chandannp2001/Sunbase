@@ -19,7 +19,7 @@
 
     <div class="container">
     	
-        <form action="CustomerDetails" method="get">
+        <form action="addcustomer" >
 
             <div class="personal-details">
                 <h2>Personal Details</h2>
