@@ -1,8 +1,6 @@
 package com.customer.DAOImpl;
 
 import java.sql.Connection;
-
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -12,6 +10,7 @@ import java.util.List;
 
 import com.customer.DAO.CustomerDAO;
 import com.customer.Model.Customer;
+import com.customer.Utility.DatabaseUtil;
 
 public class CustomerDAOImpl implements CustomerDAO {
 
@@ -25,22 +24,19 @@ public class CustomerDAOImpl implements CustomerDAO {
 	private static final String SELECT_QUERY5 = "SELECT * FROM `customer` WHERE (`customerId` = ?)";
 	private static final String SELECTALL_QUERY = "SELECT * FROM `customer`";
 
+	 private DatabaseUtil dbUtil;
 	private static Connection connection;
 	private static PreparedStatement prepareStatement;
 	private static Statement statement;
 	private static ResultSet res;
 
-	public  CustomerDAOImpl() {// String first_name, String last_name, String street, String city, String
-								// state,
-		// String email, int phone_number
-		try {
-			Class.forName("com.mysql.cj.jdbc.Driver");
-			connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/usermanagement", "root", "root");
-		} catch (ClassNotFoundException | SQLException e) {
-			e.printStackTrace();
-		}
+	public  CustomerDAOImpl() {
+		
+		 dbUtil = new DatabaseUtil();
+	     connection = dbUtil.getConnection();
 	}
 
+	
 	@Override
 	public void addCustomer(Customer customer) {
 
@@ -70,6 +66,8 @@ public class CustomerDAOImpl implements CustomerDAO {
 		}
 	}
 
+	
+	
 	@Override
 	public void updateCustomer(Customer customer) {
 		// TODO Auto-generated method stub
@@ -123,7 +121,7 @@ public class CustomerDAOImpl implements CustomerDAO {
 			res = statement.executeQuery(SELECTALL_QUERY);
 
 			List<Customer> list = new ArrayList<Customer>();
-			// `first_name`, `last_name`, `street`, `city`, `state`, `email`, `phone_number
+			
 			while (res.next()) {
 				Customer c = new Customer(res.getString("customerId"), res.getString("first_name"),
 						res.getString("last_name"), res.getString("street"), res.getString("address"),
@@ -151,7 +149,7 @@ public class CustomerDAOImpl implements CustomerDAO {
 			res = prepareStatement.executeQuery();
 
 			List<Customer> list = new ArrayList<Customer>();
-			// `first_name`, `last_name`, `street`, `city`, `state`, `email`, `phone_number
+			
 			while (res.next()) {
 				Customer c = new Customer(res.getString("customerId"), res.getString("first_name"),
 						res.getString("last_name"), res.getString("street"), res.getString("address"),
@@ -177,7 +175,7 @@ public class CustomerDAOImpl implements CustomerDAO {
 			res = prepareStatement.executeQuery();
 
 			List<Customer> list = new ArrayList<Customer>();
-			// `first_name`, `last_name`, `street`, `city`, `state`, `email`, `phone_number
+			
 			while (res.next()) {
 				Customer c = new Customer(res.getString("customerId"), res.getString("first_name"),
 						res.getString("last_name"), res.getString("street"), res.getString("address"),
@@ -204,7 +202,7 @@ public class CustomerDAOImpl implements CustomerDAO {
 			System.out.println("hi");
 
 			List<Customer> list = new ArrayList<Customer>();
-			// `first_name`, `last_name`, `street`, `city`, `state`, `email`, `phone_number
+			
 			while (res.next()) {
 
 				Customer c = new Customer(res.getString("customerId"), res.getString("first_name"),
@@ -231,7 +229,7 @@ public class CustomerDAOImpl implements CustomerDAO {
 			res = prepareStatement.executeQuery();
 
 			List<Customer> list = new ArrayList<Customer>();
-			// `first_name`, `last_name`, `street`, `city`, `state`, `email`, `phone_number
+			
 			while (res.next()) {
 				Customer c = new Customer(res.getString("customerId"), res.getString("first_name"),
 						res.getString("last_name"), res.getString("street"), res.getString("address"),

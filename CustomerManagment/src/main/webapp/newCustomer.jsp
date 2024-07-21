@@ -19,14 +19,11 @@
 
     <div class="container">
     	
-        <form action="addcustomer" >
+        <form action="CustomerDetails" method="get">
 
             <div class="personal-details">
                 <h2>Personal Details</h2>
-                <label for="CustomerId">Customer Id:</label>
-                <input type="text" id="CustomerId" name="CustomerId" placeholder="CustomerId" required>
-                
-                
+              
                 <label for="firstname">First Name:</label>
                 <input type="text" id="firstname" name="firstname" placeholder="First Name" required>
 

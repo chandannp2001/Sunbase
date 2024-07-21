@@ -125,7 +125,8 @@
 		<div class="pagination">
 			<%
 			//int pageSize = 5;
-			int totalCustomers = getAllCustomer.size();
+			
+			int totalCustomers = getAllCustomer==null?0:getAllCustomer.size();
 			int totalPages = (int) Math.ceil((double) totalCustomers /numberofDetails );
 			if (totalPages > 1) {
 			%>
